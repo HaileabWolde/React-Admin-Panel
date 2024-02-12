@@ -5,7 +5,10 @@ import cookieParser from 'cookie-parser'
 import connectDB from './config/dbConnect.mjs'
 import helmet from 'helmet'
 import morgan from 'morgan'
-
+import clientRoute from './routes/client.js'
+import generalRoute from "./routes/general.js"
+import managmentRoute from './routes/management.js'
+import salesRoute from './routes/sales.js'
 
 config()
 
@@ -22,6 +25,10 @@ app.use(cors());
 app.get('/', (req, res)=>{
     res.json('Hello Motherfucker')
 })
+app.use('/client', clientRoute)
+app.use('/general', generalRoute)
+app.use('/managment', managmentRoute)
+app.use('/sales', salesRoute)
 
 const start = async()=>{
     try{
