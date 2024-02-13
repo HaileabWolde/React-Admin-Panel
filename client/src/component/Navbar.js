@@ -12,7 +12,7 @@ ArrowDropDownOutlined
 import FlexBetween from "./FlexBetween"
 import Haileab from '../assets/Haileab.png'
 import { AppBar, IconButton, InputBase, Toolbar } from "@mui/material"
-export const Navbar = ()=>{
+export const Navbar = ({ isSideBarOpen, setisSideBarOpen})=>{
     const dispatch = useDispatch();
     const theme = useTheme()
     return (
@@ -32,7 +32,7 @@ export const Navbar = ()=>{
         > {/* Left Side Of The Navigation Bar*/}
             <FlexBetween
            >
-                <IconButton onClick={()=> console.log('open Sidebar nigga')}>
+                <IconButton onClick={()=> setisSideBarOpen((prev)=> !prev)}>
                     <MenuIcon/>
                 </IconButton>
                 <FlexBetween
