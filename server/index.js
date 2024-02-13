@@ -9,6 +9,8 @@ import clientRoute from './routes/client.js'
 import generalRoute from "./routes/general.js"
 import managmentRoute from './routes/management.js'
 import salesRoute from './routes/sales.js'
+import { dataUser } from './data/index.js'
+import User from './model/User.js'
 
 config()
 
@@ -36,6 +38,7 @@ const start = async()=>{
         app.listen(PORT, ()=>{
             console.log(`Server is listening on port ${PORT}`)
         })
+       
     }
     catch(error){
         console.log(error.message)
