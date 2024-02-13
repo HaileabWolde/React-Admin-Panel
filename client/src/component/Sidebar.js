@@ -149,7 +149,7 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice}
                      onClick={
                         ()=> {navigate(`/${lcText}`)}}    
                      sx={{
-                        backgroundColor: isactive === lcText ? theme.palette.secondary[300] : "transparent"
+                        backgroundColor: isactive === lcText ? theme.palette.secondary[300] : "transparent",
                      }}
                      >
                     <ListItemIcon
@@ -164,7 +164,12 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice}
                         color: isactive === lcText ? theme.palette.primary[600] : theme.palette.secondary[200]
                     }} 
                     primary={text}/>
-                                
+                    {
+                        isactive === lcText && (
+                        <ChevronRightOutlined sx={{
+                            color: theme.palette.primary[600]
+                        }}/>)
+                    }      
                 </ListItemButton>
                 </ListItem>
                
