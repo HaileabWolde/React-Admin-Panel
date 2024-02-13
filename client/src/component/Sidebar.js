@@ -97,7 +97,7 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice}
     useEffect(()=>{
         setIsactive(pathname.substring(1));
     }, [])
-    console.log(isactive)
+   
      return (
         <Box component="nav">
     {
