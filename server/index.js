@@ -9,8 +9,7 @@ import clientRoute from './routes/client.js'
 import generalRoute from "./routes/general.js"
 import managmentRoute from './routes/management.js'
 import salesRoute from './routes/sales.js'
-import { dataUser } from './data/index.js'
-import User from './model/User.js'
+
 
 config()
 
