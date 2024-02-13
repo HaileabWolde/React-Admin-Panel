@@ -37,6 +37,10 @@ const start = async()=>{
         app.listen(PORT, ()=>{
             console.log(`Server is listening on port ${PORT}`)
         })
+        /*
+        adding all the user data make sure to do it only once
+        //User.insertMany(dataUser)
+        */
        
     }
     catch(error){

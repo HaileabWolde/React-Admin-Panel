@@ -9,7 +9,8 @@ import {
     ListItemIcon,
     Box,
     Typography,
-    IconButton
+    IconButton,
+    Divider
 
 } from "@mui/material";
 import {
@@ -30,6 +31,7 @@ import {
 } from "@mui/icons-material"
 import { useLocation, useNavigate } from "react-router-dom";
 import FlexBetween from "./FlexBetween";
+import Haileab from "../assets/Haileab.png"
 const navItems = [
     {
       text: "Dashboard",
@@ -88,7 +90,7 @@ const navItems = [
       icon: <TrendingUpOutlined />,
     },
   ];
-const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice})=> {
+const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice, user})=> {
     const theme = useTheme();
     const [isactive, setIsactive] = useState('')
     const navigate = useNavigate();
@@ -137,7 +139,7 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice}
                    
                 }              
             </FlexBetween>
-         </Box>
+        
          <List>
            {navItems.map(({text, icon})=> {
 
@@ -176,9 +178,47 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice}
             )
            })}
          </List>
+         </Box>
+         <Box
+         position="absolute"
+         bottom='-30rem'
+         width="100%"
+         >
+          <Divider/>
+          <FlexBetween>
+            <Box
+            component="Img"
+            alt="ProfilePic"
+            src={Haileab}
+            height="40px"
+            width="40px"
+            borderRadius="50%"
+            sx={{objectFit: "fit"}}
+            />
+            <Box>
+              <Typography
+              fontWeight="bold"
+              fontSize="0.9rem"
+              sx={{color: theme.palette.secondary[100]}}
+              >
+                {user.name}
+
+              </Typography>
+              <Typography
+              fontWeight="bold"
+              fontSize="0.9rem"
+              sx={{color: theme.palette.secondary[100]}}
+              >
+                {user.occupation}
+
+              </Typography>
+            </Box>
+            <SettingsOutlined/>
+          </FlexBetween>
+          <Divider/>
+         </Box>
         </Drawer>
-        )
-      }
+        )}
         </Box>
 
     )

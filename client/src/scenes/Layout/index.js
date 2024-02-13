@@ -11,7 +11,7 @@ const Layout = ()=>{
     const {userId} = useSelector((state)=> state.global)
     const {data} = useGetUserQuery(userId)
 
-    console.log(data)
+    
     return (
         <Box width="100%" height="100%" display={isNonMobileDevice ? 'flex' : 'block'}>
                 
@@ -20,6 +20,7 @@ const Layout = ()=>{
                 setisSideBarOpen = {setisSideBarOpen}
                 drawerWidth="250px"
                 isNonMobileDevice={isNonMobileDevice}
+                user={data || {}}
                 />
                 
                 <Box>
@@ -30,6 +31,7 @@ const Layout = ()=>{
                 <Navbar
                 isSideBarOpen = {isSideBarOpen}
                 setisSideBarOpen = {setisSideBarOpen}
+                user={data || {}}
                 />
                 <Outlet/>
                 </Box>
