@@ -9,8 +9,9 @@ import clientRoute from './routes/client.js'
 import generalRoute from "./routes/general.js"
 import managmentRoute from './routes/management.js'
 import salesRoute from './routes/sales.js'
-
-
+import Product from './model/Product.js'
+import ProductStat from './model/ProductStat.js'
+import { dataProduct, dataProductStat } from './data/index.js'
 config()
 
 const app = express()
@@ -40,7 +41,10 @@ const start = async()=>{
         /*
         adding all the user data make sure to do it only once
         //User.insertMany(dataUser)
+         Product.insertMany(dataProduct)
+       ProductStat.insertMany(dataProductStat)
         */
+      
        
     }
     catch(error){

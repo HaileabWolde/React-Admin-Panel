@@ -23,7 +23,7 @@ const Layout = ()=>{
                 user={data || {}}
                 />
                 
-                <Box>
+                <Box flexGrow={1}>
                     {/*
                     so box is like A div element which in it's default will put it in a block
                     */}

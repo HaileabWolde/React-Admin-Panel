@@ -1,3 +1,4 @@
+import { useState } from "react"
 import { setMode } from "../redux/Mode/ModeSlice"
 import {useDispatch } from "react-redux"
 import { useTheme } from "@emotion/react"
@@ -9,12 +10,21 @@ Search,
 SettingsOutlined,
 ArrowDropDownOutlined
 } from "@mui/icons-material"
+import {Box, Typography, IconButton, AppBar,  InputBase, Toolbar, Menu, MenuItem} from "@mui/material"
 import FlexBetween from "./FlexBetween"
 import Haileab from '../assets/Haileab.png'
-import { AppBar, IconButton, InputBase, Toolbar } from "@mui/material"
-export const Navbar = ({ isSideBarOpen, setisSideBarOpen})=>{
+
+export const Navbar = ({ isSideBarOpen, setisSideBarOpen, user})=>{
     const dispatch = useDispatch();
-    const theme = useTheme()
+    const theme = useTheme();
+    const [anchorEl, setAnchorEl] = useState(null);
+    const open = Boolean(anchorEl)
+    const handleClick = (event)=>{
+        setAnchorEl(event.currentTarget);
+    }
+    const handleClose = ()=>{
+        setAnchorEl(null);
+    }
     return (
        <AppBar
        sx={{
@@ -62,6 +72,51 @@ export const Navbar = ({ isSideBarOpen, setisSideBarOpen})=>{
                 <IconButton>
                     <SettingsOutlined sx={{fontSize: "25px"}}/>
                 </IconButton>
+            </FlexBetween>
+            <FlexBetween>
+            <Box
+            component="Img"
+            alt="ProfilePic"
+            src={Haileab}
+            height="40px"
+            width="40px"
+            borderRadius="50%"
+            sx={{objectFit: "fit"}}
+            />
+              <Box>
+              <Typography
+              fontWeight="bold"
+              fontSize="0.9rem"
+              sx={{color: theme.palette.secondary[100]}}
+              >
+                {user.name}
+
+              </Typography>
+              <Typography
+              fontWeight="bold"
+              fontSize="0.9rem"
+              sx={{color: theme.palette.secondary[100]}}
+              >
+                {user.occupation}
+
+              </Typography>
+             
+            </Box>
+            <IconButton
+            sx={{color: theme.palette.secondary[300], fontSize: "25px"}} 
+            onClick={handleClick}>
+              <ArrowDropDownOutlined/>
+              </IconButton>
+              <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              anchorOrigin={{ vertical: "bottom", horizontal: "center"}}
+              >
+                <MenuItem onClick={handleClose}>
+                Log Out
+                </MenuItem>
+              </Menu>
             </FlexBetween>
         </Toolbar>
        </AppBar>

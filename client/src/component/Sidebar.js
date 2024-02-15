@@ -215,7 +215,6 @@ const Sidebar = ({isSideBarOpen,setisSideBarOpen, drawerWidth,isNonMobileDevice,
             </Box>
             <SettingsOutlined/>
           </FlexBetween>
-          <Divider/>
          </Box>
         </Drawer>
         )}
