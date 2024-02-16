@@ -11,7 +11,8 @@ import managmentRoute from './routes/management.js'
 import salesRoute from './routes/sales.js'
 import Product from './model/Product.js'
 import ProductStat from './model/ProductStat.js'
-import { dataProduct, dataProductStat } from './data/index.js'
+import Transaction from './model/Transaction.js'
+import { dataProduct, dataProductStat, dataTransaction } from './data/index.js'
 config()
 
 const app = express()
@@ -43,8 +44,9 @@ const start = async()=>{
         //User.insertMany(dataUser)
          Product.insertMany(dataProduct)
        ProductStat.insertMany(dataProductStat)
+        Transaction.insertMany(dataTransaction)
         */
-      
+     
        
     }
     catch(error){
