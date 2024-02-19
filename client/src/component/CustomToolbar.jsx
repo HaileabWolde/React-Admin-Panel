@@ -23,6 +23,7 @@ const CustomToolbar = ({searchInput, setSearchInput, setSearch})=> {
      label="Search... "
      sx={{ mb: "0.5rem"}}
      value={searchInput}
+     variant="standard"
      onChange={(e)=> setSearchInput(e.target.value)}
      InputProps={{
         endAdornment: (

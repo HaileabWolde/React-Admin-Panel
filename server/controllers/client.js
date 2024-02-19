@@ -2,7 +2,8 @@ import Product from "../model/Product.js"
 import ProductStat from "../model/ProductStat.js"
 import User from "../model/User.js"
 import Transaction from "../model/Transaction.js"
-
+import OverallStat from "../model/OverallStat.js"
+import getCountryIso3 from "country-iso-2-to-3"
 export const getProduct = async(req, res)=>{
     try{
         const AllProduct = await Product.find()
@@ -73,3 +74,36 @@ export const getTransactions = async (req, res) => {
       res.status(404).json({ message: error.message });
     }
   };
+
+  export const getGeography = async(req, res)=>{
+    try{
+        const AllUser = await User.find();
+        /*
+        first we have to create key: value like "AR": 1, "CR": 2 because
+        so first we have to map of the user data and then find the country from
+        each user and assign is to the accumulator object as key and value and then
+        when that country of the user is found again it will add the value to the each 
+        of the object
+        */
+        const mappedLocations = AllUser.reduce((accumulator, {country})=>{
+          const countryISO3 = getCountryIso3(country)
+          if(!accumulator[countryISO3]){
+             accumulator[country] = 0
+          }
+           accumulator[country]++;
+           return accumulator;
+        }, {});
+          const formattedLocations = Object.entries(mappedLocations).map(
+            ([country, count])=>{
+              return {id: country, value:count};
+            }
+          )
+        res.status(200).json(formattedLocations);
+
+    }
+    catch(error){
+      res.status(404).json({message: error.message})
+    }
+  }
+
+  
